@@ -48,7 +48,7 @@ const createHeader = array => { //Pass the function an array as it's only argume
     const li = document.createElement("li"); //creates the li items
     li.textContent = item;
     return li;// Step 2: Iterate over the array creating a list item <li> element for each item in the array. 
-    Add those items to the <ul>
+    //Add those items to the <ul>
   });
 
   for (let li of items) {

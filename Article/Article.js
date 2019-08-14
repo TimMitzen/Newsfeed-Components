@@ -184,6 +184,9 @@ const newArticle = data.map((article)=>{
   
 });
 
-newArticle.forEach(element =>{
+// newArticle.forEach(element =>{
+//   articles.appendChild(element);
+// });
+for(let element of newArticle){
   articles.appendChild(element);
-})
+}
