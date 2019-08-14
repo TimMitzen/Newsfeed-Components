@@ -85,7 +85,24 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+    title: 'Tim is the man with The master Plan',
+    date: 'Aug 13t, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,3 +129,61 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+const articles = document.querySelector(".articles");
+
+
+
+const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+const article1 = document.createElement("div");//creates the elements return the parent div
+const articleTitle = document.createElement("h2");
+const articleDate = document.createElement("p")
+const articleContent1 = document.createElement("p");
+const articleContent2 = document.createElement("p");
+const articleContent3 = document.createElement("p");
+const articleButton = document.createElement("span");
+const articleButtonOpen = document.createElement("span");
+const articleButtonClose = document.createElement("span")
+
+article1.appendChild(articleTitle);
+article1.appendChild(articleDate);
+article1.appendChild(articleContent1);
+article1.appendChild(articleContent2);
+article1.appendChild(articleContent3);
+article1.appendChild(articleButton);
+article1.appendChild(articleButtonOpen);
+article1.appendChild(articleButtonClose);
+
+
+article1.classList.add("article");//creates the class names
+articleDate.classList.add("date");
+articleContent1.classList.add("content")
+articleContent2.classList.add("content")
+articleContent3.classList.add("content")
+articleButton.classList.add("expandButton");
+
+
+const toggle = "expand"
+articleTitle.textContent = title;
+articleDate.textContent = date;
+articleContent1.textContent = firstParagraph;
+articleContent2.textContent = secondParagraph;
+articleContent3.textContent = thirdParagraph;//sets the text
+articleButton.textContent = toggle;
+
+articleButton.addEventListener("click", ()=>{
+  
+  article1.classList.toggle("article-open")
+  
+});
+
+
+return article1;
+}
+const newArticle = data.map((article)=>{
+  return createArticle(article.title, article.date, article.secondParagraph, article.thirdParagraph, article.firstParagraph)
+  
+});
+
+newArticle.forEach(element =>{
+  articles.appendChild(element);
+})
